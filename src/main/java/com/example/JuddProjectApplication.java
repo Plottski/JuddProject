@@ -1,20 +1,7 @@
-package com.example.JuddProject;
+package com.example;
 
-import com.sun.tools.javac.Main;
-import jakarta.annotation.Resources;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.springframework.boot.autoconfigure.web.WebProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 @SpringBootApplication
 public class JuddProjectApplication {
