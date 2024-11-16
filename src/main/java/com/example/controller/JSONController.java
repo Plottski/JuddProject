@@ -9,9 +9,8 @@ import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.boot.json.JsonParseException;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +18,13 @@ import java.util.Map;
 @RestController
 public class JSONController {
 
-    @PostMapping("/search")
-    public ResponseEntity<String> handleFormData(HttpSession session, @RequestBody FormData theData) throws JsonProcessingException {
+    @RequestMapping(path = "/search", method = RequestMethod.POST)
+    //@PostMapping("/search", method = RequestMethod.POST)
+    //public ResponseEntity<String> handleFormData(HttpSession session, @RequestBody FormData theData) throws JsonProcessingException {
     //public ResponseEntity<String> handleFormData(HttpSession session, @RequestBody HashMap<String,String> whatJuddWant) {
+    public ResponseEntity<String> handleFormData(HttpSession session, @RequestBody String theData) throws JsonProcessingException {
 
+        System.out.println(theData);
       /*  HashMap<String,String> json = new HashMap<>();
         HashMap mapper;
         JacksonJsonParser parser = new JacksonJsonParser();

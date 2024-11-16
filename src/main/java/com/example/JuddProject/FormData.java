@@ -1,13 +1,17 @@
 package com.example.JuddProject;
 
 public class FormData {
-    private String juddWantStuff;
+    private String theData;
 
-    public void setParameters(String parameters) {
-        this.juddWantStuff = juddWantStuff;
+    public FormData(String juddWantStuff) {
+        this.theData = juddWantStuff;
     }
 
-    public String getParameters() {
-        return juddWantStuff;
+    public String getTheData() {
+        return theData;
+    }
+
+    public void setTheData(String theData) {
+        this.theData = theData;
     }
 }

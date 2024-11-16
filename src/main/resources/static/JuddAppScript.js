@@ -55,13 +55,17 @@
               url: '/search',
               type: 'POST',
               contentType: 'application/json',
+              //data:whatJuddWant.val(),
               //data: JSON.stringify(whatJuddWant),
-              data: JSON.stringify({
-                theData:whatJuddWant
-              }),
-              dataType: 'json',
+              //data: {
+                //theData:whatJuddWant
+              //},
+              //data: JSON.stringify({
+                //theData:whatJuddWant
+             // }),
+             data:whatJuddWant,
               Success: function(response) {
-                console.log("Sucess:", response);
+                console.log("Success:", response);
               },
               error: function(error) {
                 console.error("Error:", error);
