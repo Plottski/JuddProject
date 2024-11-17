@@ -1,9 +1,9 @@
 package com.example.controller;
-
 import com.example.JuddProject.FormData;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 import jakarta.servlet.http.HttpSession;
@@ -14,8 +14,9 @@ import org.springframework.boot.json.JsonParseException;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -80,9 +81,35 @@ public class JSONController {
 
         HttpURLConnection con;
         con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+
+        int responseCode = con.getResponseCode();
+        String googleResponse = new String();
+
+        if (responseCode == 200) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String line;
+            StringBuilder response = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+            reader.close();
+
+            System.out.println(response);
+            googleResponse = response.toString();
+
+            System.out.println(googleResponse);
+
+            ObjectMapper mapper = new ObjectMapper();
 
 
-        return ResponseEntity.ok(searchQuery);
+        }
+        else {
+            System.out.println("You done goofed son!");
+        }
+
+
+        return ResponseEntity.ok(googleResponse);
 
 
         //This is an example of the URL format that needs to be done to perform a get request
