@@ -39,10 +39,9 @@
     juddForm.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      $(document).ready(function(){
           $('#formForJudd').submit(function(event) {
             console.log(whatJuddWant);
-            event.preventDefault();
+            //event.preventDefault();
             var whatJuddWant = $("#juddWantDis").val();
             //var whatJuddWant = {
               //juddWantStuff: $('#juddWantDis').val()
@@ -64,8 +63,21 @@
                 //theData:whatJuddWant
              // }),
              data:whatJuddWant,
-              Success: function(response) {
-                console.log("Success:", response);
+              Success: function(data) {
+                var msg = JSON.parse(data);
+                console.log(msg);
+                doThings(msg);
+                //doThings(data);
+                //console.log(handleFormData);
+                //var serverData = []
+                //serverData = JSON.parse(respons);
+                //console.log("Success:", serverData);
+                //return serverData;
+                //if response.status === 200 {
+                  //var data = response;
+                  //var parsedJson = JSON.parse(data);
+                //  console.log(data);
+                  //console.log(parsedJson);
               },
               error: function(error) {
                 console.error("Error:", error);
@@ -73,5 +85,18 @@
             });
           });
     });
-    })
+
+    $(document).ajaxComplete(function(serverData) {
+      doThings(serverData);
+    });
+
+  //  $.post('/search', function(data) {
+    //  var serverData = [];
+      //  serverData = data;
+      //  console.log(data);
+    //});
+  }
+
+  function doThings(msg) {
+    console.log(msg);
   }
